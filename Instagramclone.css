@@ -66,7 +66,7 @@ body{
     color: white;
     font-size: 9px;
     font-weight: bold;
-    font-family: arial;;
+    font-family: arial;
 }
 
 .Post{
@@ -84,6 +84,7 @@ body{
     
 }
 .Main-container{
+    background-color: lightgoldenrodyellow;
     padding-left:15px;
     padding-top: 40px;
     display: flex;
@@ -129,7 +130,12 @@ body{
 .Switch-button:hover{
     text-decoration: underline;
 }
+.suggested-accounts{
+    background-color:lightgreen;
+   margin-bottom: 35px;
+}
 .Suggested-for-you-container{
+    background-color: lightslategray;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     display: flex;
     width: fit-content;
@@ -138,6 +144,7 @@ body{
     
 }
 .Suggested-for-you-container p{
+    display: flex;
     color:rgb(106, 113, 122);
     font-size: 14px;
     font-weight:500;
@@ -167,3 +174,94 @@ body{
     width:fit-content;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
+.Privacy-terms-container{
+    background-color:lightblue;
+    height: 100vh;
+}
+.Privacy-terms-container p{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin:0;
+    padding-bottom:2.8px;
+    padding-left:40px;
+    font-size:12px;
+    color:rgb(106, 113, 122);
+}
+.Property-rights{
+    padding-top:20px;
+
+}
+        .Switch-button2 {
+            width:251px;
+            height:54.400px;
+            position: fixed;
+            bottom: 35px;  /* Keeps it at the bottom */
+            right: 45px;   /* Keeps it at the right */
+            
+            display: flex;
+            align-items: center;
+            
+            /* THIS IS THE KEY: Creates exactly 10px space between Icon, Text, and Image */
+            gap: 5px; 
+            
+            padding: 10px 15px; /* Adds breathing room inside the button */
+            background-color:white; /* Needed to see the button */
+            border-radius: 50px;     /* Makes it a pill shape */
+            box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 12px 0px; /* Adds the shadow pop */
+            border: none;
+            cursor: pointer;
+            
+            
+            font-family: system-ui, -apple-system, sans-serif;
+            font-weight: 600;
+        }
+         .img1, .img2 {
+            height: 25px;
+            width: 25px;
+            border-radius: 50%;
+            border: 2px solid white; /* Adds the overlap effect border */
+            margin-left: 55px; /* Pushes image slightly right */
+
+        }
+
+        .img2{
+            margin: -12px;
+            z-index: -1;
+        }
+
+        /* The container for Icon + Red Dot */
+        .message {
+            position: relative; /* Anchors the red dot */
+            width: fit-content; /* CRITICAL: Only takes as much space as the icon needs */
+            /* Removed width: 85px */
+            /* Removed background-color: lightblue (unless you want to see the box) */
+        }
+
+        .fa-location-arrow {
+            font-size: 30px;
+            transform: rotate(15deg);
+            /* Removed padding-right/left because 'gap' handles spacing now */
+        }
+
+        .message-popup {
+            position: absolute; /* Floats on top of the icon */
+            top: -3px;          /* Move up */
+            right: -8px;        /* Move right */
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            width: 18px;
+            height: 18px;
+            background-color: #ff3040;
+            border-radius: 50%;
+            border: 2px solid white;
+            
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+        }
+        .Message-tittle{
+            margin: 0; 
+            font-size:16px ;
+        }
