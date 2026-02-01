@@ -1,0 +1,169 @@
+body{
+    padding:0;
+    margin:0;
+}
+.Div-Main {
+    display: flex;
+    background-color: white;
+    margin-left: 255px; 
+    min-height: 100vh; 
+    width: auto; 
+}
+.sidebar{
+    position: fixed;
+    background-color: lightblue;
+    bottom:0;
+    top:0;
+    left:0;
+    width: 215px;        
+    display: flex;       
+    flex-direction: column; 
+    justify-content: space-between; 
+   
+    padding: 20px;
+}
+.Sidebar-links {
+    font-size:25px;
+    left:2px;
+    
+}
+.Sidebar-links img{
+    height: 25px;
+    width: 25px;
+    border-radius:25px;
+}
+.icon-wrapper{
+    position: relative;
+    width: fit-content;
+}
+.Heart-indicator{
+    position: absolute;
+    top: -1px;   /* Adjust up/down */
+    right: -4px; /* Adjust left/right */
+    
+    /* Dot Styling */
+    width: 9px;
+    height: 9px;
+    background-color: #ff3040;
+    border-radius: 50%;
+    border: 2px solid white; 
+}
+.fa-location-arrow{
+    font-size:30px;
+}
+.message-indicator{
+    position: absolute;
+    display:flex;
+    top: -4px;  
+    right: -6px; 
+    width: 15px;
+    height: 15px;
+    background-color: #ff3040;
+    border-radius: 50%;
+    border: 2px solid white; 
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 9px;
+    font-weight: bold;
+    font-family: arial;;
+}
+
+.Post{
+    display:flex;
+    flex: 1;      
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightcoral;
+}
+.followrequest {
+    flex: 1;
+    flex-direction: column;
+    position: static;   
+    
+}
+.Main-container{
+    padding-left:15px;
+    padding-top: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:center;
+    width:fit-content;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.owner-dp{
+    padding-left:25px;
+    margin-right: 7px;
+}
+.owner-dp img{
+    height: 44px;
+    width: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.owner-details p{
+    margin: 0;
+}
+.owner-account-name{
+    font-size:14px;
+    font-weight:600;
+    cursor: pointer;
+}
+.Owner-name{
+    color:rgb(106, 113, 122);
+    font-weight:400;
+    font-size: 14px;
+}
+.Switch-button{
+    margin-left:55px;
+    margin-right:10px;
+    background-color:rgb(255, 255, 255);
+    border-color: white;
+    border-style:solid;
+    color: rgb(49, 67, 227);
+    cursor: pointer;
+    transition: text-decoration 0.15s;
+}
+.Switch-button:hover{
+    text-decoration: underline;
+}
+.Suggested-for-you-container{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    display: flex;
+    width: fit-content;
+    margin-left:40px;
+    margin-top:20px ;
+    
+}
+.Suggested-for-you-container p{
+    color:rgb(106, 113, 122);
+    font-size: 14px;
+    font-weight:500;
+    margin: 0;
+}
+.Suggested-for-you-container-button{
+    margin-left:120px;
+    margin-right:10px;
+    background-color:rgb(255, 255, 255);
+    border-color: white;
+    border-style:solid;
+    color: rgb(12, 16, 20);
+    cursor: pointer;
+    transition: color 0.15s;
+    
+}
+.Suggested-for-you-container-button:hover{
+    color:rgb(146, 153, 159);
+}
+.Main-container1 { 
+    padding-left:20px;
+    padding-top: 12px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:center;
+    width:fit-content;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
