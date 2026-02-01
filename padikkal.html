@@ -4,97 +4,116 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <title>Padikkal</title>
     <style>
-        .Switch-button2 {
-            width:251px;
-            height:54.400px;
-            position: fixed;
-            bottom: 35px;  /* Keeps it at the bottom */
-            right: 45px;   /* Keeps it at the right */
-            
+        .status-circle-container{
             display: flex;
+            flex-direction: row;
+            gap:12px
+        }
+        .status-circle{
+            display:flex;
+            flex-direction: column;
+            width: fit-content;
+            justify-content: center;
             align-items: center;
-            
-            /* THIS IS THE KEY: Creates exactly 10px space between Icon, Text, and Image */
-            gap: 5px; 
-            
-            padding: 10px 15px; /* Adds breathing room inside the button */
-            background-color:white; /* Needed to see the button */
-            border-radius: 50px;     /* Makes it a pill shape */
-            box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 12px 0px; /* Adds the shadow pop */
-            border: none;
-            cursor: pointer;
-            
-            
-            font-family: system-ui, -apple-system, sans-serif;
-            font-weight: 600;
         }
-         .img1, .img2 {
-            height: 25px;
-            width: 25px;
+        .Status-color-ring{
+            display:flex;
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+            width:100px;
+            height:100px;
             border-radius: 50%;
-            border: 2px solid white; /* Adds the overlap effect border */
-            margin-left: 55px; /* Pushes image slightly right */
-
-        }
-
-        .img2{
-            margin: -12px;
-            z-index: -1;
-        }
-
-        /* The container for Icon + Red Dot */
-        .message {
-            position: relative; /* Anchors the red dot */
-            width: fit-content; /* CRITICAL: Only takes as much space as the icon needs */
-            /* Removed width: 85px */
-            /* Removed background-color: lightblue (unless you want to see the box) */
-        }
-
-        .fa-location-arrow {
-            font-size: 30px;
-            transform: rotate(15deg);
-            /* Removed padding-right/left because 'gap' handles spacing now */
-        }
-
-        .message-popup {
-            position: absolute; /* Floats on top of the icon */
-            top: -3px;          /* Move up */
-            right: -8px;        /* Move right */
-            
-            display: flex;
             justify-content: center;
             align-items: center;
             
-            width: 18px;
-            height: 18px;
-            background-color: #ff3040;
-            border-radius: 50%;
-            border: 2px solid white;
-            
-            color: white;
-            font-size: 10px;
-            font-weight: bold;
         }
-        .Message-tittle{
-            margin: 0; 
-            font-size:16px ;
+        .Account-image-status{
+            display:flex;
+            width:85px;
+            height:85px;
+            border-color: white;
+            border-style: solid;
+            border-width:4px;
+            border-radius: 50%;
+            background-color: black;
+        }
+        .Account-image-status img{
+            width:85px;
+            height:85px;
+            border-radius:50%;
+        }
+        .Account-name{
+            display:flex;
+        }
+        .Account-name p{
+            margin:0;
+            left
         }
     </style>
 </head>
-<body>
+<body >
+    <div>
+        <div class="status-circle-container">
+            <div class="status-circle">
+                <div class="Status-color-ring">
+                    <div class="Account-image-status">
+                        <img src="Assets/448622100_3197865503681905_4901430874246769142_n.jpg" alt="">
+                    </div>
+                </div>
+                <div class="Account-name">
+                    <p>_aswin_.</p>
+                </div>
+            </div>
+            <div class="status-circle">
+                <div class="Status-color-ring">
+                    <div class="Account-image-status">
+                        <img src="Assets/134158423_199809755147140_3151730214697562158_n.jpg" alt="">
+                    </div>
+                </div>
+                <div class="Account-name">
+                    <p>Srilankan</p>
+                </div>
+            </div>
+            <div class="status-circle">
+                <div class="Status-color-ring">
+                    <div class="Account-image-status">
+                        <img src="Assets/271372259_610134323592340_8226558750302128924_n.jpg" alt="">
+                    </div>
+                </div>
+                <div class="Account-name">
+                    <p>i_arry.c</p>
+                </div>
+            </div>
+                    <div class="status-circle">
+                <div class="Status-color-ring">
+                    <div class="Account-image-status">
+                        <img src="Assets/434305402_782084987201700_6771454038816386039_n.jpg" alt="">
+                    </div>
+                </div>
+                <div class="Account-name">
+                    <p>Insta_c.a</p>
+                </div>
+            </div>
+                    <div class="status-circle">
+                <div class="Status-color-ring">
+                    <div class="Account-image-status">
+                        <img src="Assets/456471733_1428466287851076_3124818115232414858_n.jpg" alt="">
+                    </div>
+                </div>
+                <div class="Account-name">
+                    <p>Luftha..</p>
+                </div>
+            </div>
+                    <div class="status-circle">
+                <div class="Status-color-ring">
+                    <div class="Account-image-status">
+                        <img src="Assets/459065009_8490642477647779_3721453852841215338_n.jpg" alt="">
+                    </div>
+                </div>
+                <div class="Account-name">
+                    <p>_joel!_.</p>
+                </div>
+            </div>
 
-    <button class="Switch-button2">
-        
-        <div class="message">
-            <i class="fa-solid fa-location-arrow"></i>
-            <div class="message-popup">2</div>
         </div>
-        
-        <p class="Message-tittle">Messages</p>
-        <img class="img1" src="Assets/131547303_3928084893912725_8751326131518866670_n.jpg" alt="">
-        <img class="img2" src="Assets/131547303_3928084893912725_8751326131518866670_n.jpg" alt="">
-        
-    </button>
-
 </body>
 </html>
