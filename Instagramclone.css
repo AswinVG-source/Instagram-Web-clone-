@@ -73,6 +73,7 @@ body{
     justify-content: center;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size:14px;
+    background-color: lightgoldenrodyellow;
 }
 
 .status-circle-container{
@@ -81,7 +82,9 @@ body{
     gap:12px;
     width:fit-content;
     height: fit-content;
-    padding-top:20px
+    padding-top:20px;
+    margin-bottom:30px;
+    background-color: lightseagreen;
 }
 
 .status-circle{
@@ -109,7 +112,6 @@ body{
     border-style: solid;
     border-width:4px;
     border-radius: 50%;
-    background-color: black;
 }
 .Account-image-status img{
     width:85px;
@@ -123,6 +125,133 @@ body{
     margin:0;
 
 }
+.The-status-and-post-holder{
+    display:flex;
+    flex-direction: column;
+}
+
+.post-container{
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    width: 470px;
+    margin-bottom:30px;
+}
+.the-account-details{
+    display: flex;
+    align-items:center;
+    padding: 15px 12px;
+}
+.the-account-details p{
+    font-family:  -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    margin:0;
+}
+.the-account-details img{
+    width: 32px;         /* Instagram uses 32x32 for these headers */
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 10px;   /* Add space between image and text */
+    display: block;       /* Removes tiny hidden gaps under images */
+}
+.owner-details{ 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;    
+}
+.owner-account-name{
+    font-weight:bold;
+}
+.Switch-button{
+    color:rgb(0, 149, 246);
+    background-color:white;
+    border-color:white;
+    border-style:solid;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    font-weight:bold;
+    cursor: pointer;
+    transition: text-decoration 5s;
+}
+.Switch-button:hover {
+    text-decoration: underline;
+}
+.more-options-button{
+    margin-left: auto;
+    cursor:pointer;
+}
+.more-options-button:hover{
+    transform: scale(1.1);
+    color: rgb(162, 160, 160);
+}
+.The-post-image-container{
+    width:100%;
+}
+.The-post-image-container img{
+    width:100%;
+    border-radius:5px;
+    height: auto;
+    display: block;
+    object-fit:cover;
+
+}
+.the-likebutton-container{
+    display: flex;
+    padding:8px 10px;
+    font-size:20px;
+    align-items:center;
+    gap:12px;
+}
+.Heart-like-button, 
+.Comments-button,
+.The-save-button,
+.the-share-button {
+    display: flex;       /* unique flexbox for the button itself */
+    align-items: center; /* centers the number with the icon */
+    gap: 6px;            /* adds space between the icon and the number */
+}
+.the-likebutton-container span{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size:14px;
+    font-weight:bold;
+}
+.the-share-button{
+    font-size:18px;
+}
+.The-save-button {
+    margin-left:auto;
+}
+.fa-heart:hover, 
+.fa-comment:hover,
+.The-save-button:hover,
+.the-share-button:hover{
+    transform:scale(1.1);
+}
+.the-description{
+    display: flex;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.the-description p{
+    margin:0;
+    font-size:13px;
+}
+.Account-details-in-description{
+    font-size:13px;
+    padding-left:12px;
+    font-weight:bold;
+}
+.the-more-button-in-description{
+    font-size:11.5px;
+    color:rgb(97, 96, 96);
+    cursor: pointer;
+}
+.the-more-button-in-description:hover{
+    color: rgb(141, 140, 140);
+}
+
+
+
+
 .followrequest {
     flex: 1;
     flex-direction: column;
