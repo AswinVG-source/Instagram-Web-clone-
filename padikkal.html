@@ -4,7 +4,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <title>Padikkal</title>
     <style>
+        body{
+            background-color: rgb(255,255,255);
+        }
         .post-container{
+            position: relative;
             display: flex;
             flex-direction:column;
             justify-content: center;
@@ -16,23 +20,143 @@
             align-items:center;
             padding: 15px 12px;
         }
+
         .the-account-details p{
             font-family:  -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             font-size: 12px;
             margin:0;
         }
         .the-account-details img{
-            width: 32px;         /* Instagram uses 32x32 for these headers */
+            width: 32px;         
             height: 32px;
             border-radius: 50%;
-            margin-right: 10px;   /* Add space between image and text */
-            display: block;       /* Removes tiny hidden gaps under images */
+            margin-right: 10px;   
+            display: block; 
         }
+
         .owner-details{ 
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
+
+
+
+        /* --- POPUP CSS START --- */
+        .The-account-overview-button{
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            width:370px;
+            height:auto;
+
+            /* Adjusted positioning slightly to align better */
+            top: 50px; 
+            left: 25px;
+            background-color:rgb(250,250,250);
+            border-radius:25px;
+            
+            /* Hidden by default */
+            opacity:0;
+            pointer-events: none; /* Prevents clicking it while invisible */
+            transition: opacity 0.2s ease-in-out; /* Makes the fade smooth */
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Adds a subtle shadow */
+            z-index: 10; /* Ensures it sits on top of the image */
+        }
+
+        .owner-dp:hover ~ .The-account-overview-button,       /* Keep this (for the image) */
+        .owner-details:hover ~ .The-account-overview-button,  /* ADD THIS (for the name) */
+        .The-account-overview-button:hover {                  /* Keep this (to keep it open) */
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .owner-details:hover,
+        .owner-dp:hover{
+            cursor: pointer;
+        }
+
+        .account-details{
+            display: flex;
+            width:100%;
+            margin-top: 15px;
+            margin-left:7px
+        }
+        .account-holder-name-inside-the-hover-menu{
+            font-size: 10px;
+            font-weight: lighter;
+            color: rgb(97, 95, 95);
+        }
+        .followers-count{
+            display: flex;
+            width:100%;
+            justify-content: space-between;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: bold;
+            font-size: 15px;
+            margin-top: 25px;
+            
+        }
+        .total-post ,
+        .total-followers,
+        .total-following{
+            display: flex;
+            flex-direction:column;
+            justify-content: center;
+            align-items: center;
+
+        }
+        .total-post{
+            padding-left:35px;
+        }
+        .total-following{
+            padding-right:35px ;
+        }
+        .the-account-details-pictures{
+            display: flex;
+            justify-content: space-between; /* Added to space images evenly */
+        }
+
+        .The-account-details-pic1 img{
+            width: 122px;
+            height:140px;
+            border-radius:0;
+            margin-top: 20px;
+            margin-right:2px;
+            object-fit:cover;
+        }
+        .follow-buttons-inside{
+            width:auto;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            margin-top:20px;
+        }
+
+        .follow-buttons-inside-message, .follow-buttons-inside-follow{
+            background-color: #0095f6;
+            border-color: white;
+            border-style:solid;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size:15px;
+            width:160px;
+            padding:5px 10px;
+            border-radius: 10px;
+            margin-bottom:15px;
+            color: white; /* Added text color */
+            cursor: pointer;
+        }
+        .follow-buttons-inside-follow{
+            background-color: rgb(239, 236, 236);
+            border-color:rgb(239, 236, 236);
+            color: black;
+        }
+
+
+
+
+
+
+
         .owner-account-name{
             font-weight:bold;
         }
@@ -80,9 +204,9 @@
         .Comments-button,
         .The-save-button,
         .the-share-button {
-            display: flex;       /* unique flexbox for the button itself */
-            align-items: center; /* centers the number with the icon */
-            gap: 6px;            /* adds space between the icon and the number */
+            display: flex;       
+            align-items: center; 
+            gap: 6px;            
         }
         .the-likebutton-container span{
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -124,186 +248,108 @@
         }
     </style>
 </head>
-<body >
-<div class="post-container">
+<body>
+    <div class="post-container">
 
-
-    <div class="the-account-details">
-        <div class="owner-dp">
+        <div class="the-account-details">
+            <div class="owner-dp">
                 <img src="Assets/qatardp.jpg" alt="">
-        </div>
-        <div class="owner-details">
+            </div>
+            
+            <div class="owner-details">
+                <p class="owner-account-name">
+                    qatarairways <i class="fa-solid fa-circle-check" style="color: rgb(0, 149, 246);"></i> • 3d •<button class="Switch-button"> Follow </button>
+                </p>
+                <p class="Owner-name">
+                    Hamad International, Doha
+                </p>
+            </div>
 
-            <p class="owner-account-name">
-                qatarairways <i class="fa-solid fa-circle-check" style="color: rgb(0, 149, 246);"></i> • 3d •<button class="Switch-button"> Follow </button>
-            </p>
-            <p class="Owner-name">
-                Hamad International, Doha
-            </p>
-        </div>
-        <div class="more-options-button">
-            <i class="fa-solid fa-ellipsis"></i>
-        </div>
-        
-    </div>        
+            <div Class="The-account-overview-button">
+                
+                <div class="account-details">
+                    <div class="owner-dp">
+                        <img src="Assets/qatardp.jpg" alt="">
+                    </div>
+                    <div>
+                        <p class="owner-account-name">
+                            qatarairways <i class="fa-solid fa-circle-check" style="color: rgb(0, 149, 246);"></i> 
+                        </p>
+                        <span class="account-holder-name-inside-the-hover-menu"> Qatar airways official</span>  
+                    </div>
+                </div>
 
+                <div class="followers-count">
+                    <div class="total-post">
+                        <p>3,670</p>
+                        <p>posts</p>
+                    </div>
+                    <div class="total-followers">
+                        <p>8M</p>
+                        <p>followers</p>
+                    </div>
+                    <div class="total-following">
+                        <p>62</p>
+                        <p>following</p>
+                    </div>                                            
+                </div>
 
+                <div class="the-account-details-pictures">
+                    <div class="The-account-details-pic1">
+                        <img src="Assets/qr1.jpg" alt="">
+                    </div>
+                    <div class="The-account-details-pic1">
+                        <img src="Assets/qr2.jpg" alt="">
+                    </div>
+                    <div class="The-account-details-pic1">
+                        <img src="Assets/qr3.jpg" alt="">
+                    </div>
+                </div>
 
-    <div class="The-post-image-container">
-        <img src="Assets/qatarairways.jpg " alt="">
-    </div>
+                <div class="follow-buttons-inside">
+                    <div class="follow-buttons-inside-messager">
+                        <button class="follow-buttons-inside-message">
+                            <i class="fa-brands fa-facebook-messenger"></i> Message
+                        </button>
+                    </div>
+                    <div class="follow-buttons-inside-following">
+                        <button class="follow-buttons-inside-follow">
+                            Follow
+                        </button>
+                    </div>
+                </div>
 
+            </div>
 
+            <div class="more-options-button">
+                <i class="fa-solid fa-ellipsis"></i>
+            </div>
+        </div>        
 
-
-    <div class="the-likebutton-container">
-
-        <div class="Heart-like-button">
-
-            <i class="fa-regular fa-heart"></i>
-            <span>12K</span> 
-
-        </div>
-
-        <div class="Comments-button">
-            <i class="fa-regular fa-comment"></i>
-            <span>7k</span> </i>
-        </div>
-
-        <div class="the-share-button">
-            <i class="fa-regular fa-paper-plane"></i>
-        </div>
-
-        <div class="The-save-button">
-            <i class="fa-regular fa-bookmark"></i>
-        </div>
-    </div>
-
-
-
-    <div class="the-description">
-        <p> <span class="Account-details-in-description">qatarairways <i class="fa-solid fa-circle-check" style="color: rgb(0, 149, 246);"></i></span> Nine more 787-9 airplanes for Ethiopian Airlines! ✈️</p><span class="the-more-button-in-description"> ...more</span>      
-    </div>
-</div>
-<div class="post-container">
-
-
-    <div class="the-account-details">
-        <div class="owner-dp">
-                <img src="Assets/qatardp.jpg" alt="">
-        </div>
-        <div class="owner-details">
-
-            <p class="owner-account-name">
-                qatarairways <i class="fa-solid fa-circle-check" style="color: rgb(0, 149, 246);"></i> • 3d •<button class="Switch-button"> Follow </button>
-            </p>
-            <p class="Owner-name">
-                Hamad International, Doha
-            </p>
-        </div>
-        <div class="more-options-button">
-            <i class="fa-solid fa-ellipsis"></i>
-        </div>
-        
-    </div>        
-
-
-
-    <div class="The-post-image-container">
-        <img src="Assets/qatarairways.jpg " alt="">
-    </div>
-
-
-
-
-    <div class="the-likebutton-container">
-
-        <div class="Heart-like-button">
-
-            <i class="fa-regular fa-heart"></i>
-            <span>12K</span> 
-
+        <div class="The-post-image-container">
+            <img src="Assets/qatarairways.jpg " alt="">
         </div>
 
-        <div class="Comments-button">
-            <i class="fa-regular fa-comment"></i>
-            <span>7k</span> </i>
+        <div class="the-likebutton-container">
+            <div class="Heart-like-button">
+                <i class="fa-regular fa-heart"></i>
+                <span>12K</span> 
+            </div>
+            <div class="Comments-button">
+                <i class="fa-regular fa-comment"></i>
+                <span>7k</span> 
+            </div>
+            <div class="the-share-button">
+                <i class="fa-regular fa-paper-plane"></i>
+            </div>
+            <div class="The-save-button">
+                <i class="fa-regular fa-bookmark"></i>
+            </div>
         </div>
 
-        <div class="the-share-button">
-            <i class="fa-regular fa-paper-plane"></i>
+        <div class="the-description">
+            <p> <span class="Account-details-in-description">qatarairways <i class="fa-solid fa-circle-check" style="color: rgb(0, 149, 246);"></i></span> Nine more 787-9 airplanes for Ethiopian Airlines! ✈️</p><span class="the-more-button-in-description"> ...more</span>      
         </div>
-
-        <div class="The-save-button">
-            <i class="fa-regular fa-bookmark"></i>
-        </div>
-    </div>
-
-
-
-    <div class="the-description">
-        <p> <span class="Account-details-in-description">qatarairways <i class="fa-solid fa-circle-check" style="color: rgb(0, 149, 246);"></i></span> Nine more 787-9 airplanes for Ethiopian Airlines! ✈️</p><span class="the-more-button-in-description"> ...more</span>      
-    </div>
-</div> 
-<div class="post-container">
-
-
-    <div class="the-account-details">
-        <div class="owner-dp">
-                <img src="Assets/qatardp.jpg" alt="">
-        </div>
-        <div class="owner-details">
-
-            <p class="owner-account-name">
-                qatarairways <i class="fa-solid fa-circle-check" style="color: rgb(0, 149, 246);"></i> • 3d •<button class="Switch-button"> Follow </button>
-            </p>
-            <p class="Owner-name">
-                Hamad International, Doha
-            </p>
-        </div>
-        <div class="more-options-button">
-            <i class="fa-solid fa-ellipsis"></i>
-        </div>
-        
-    </div>        
-
-
-
-    <div class="The-post-image-container">
-        <img src="Assets/qatarairways.jpg " alt="">
-    </div>
-
-
-
-
-    <div class="the-likebutton-container">
-
-        <div class="Heart-like-button">
-
-            <i class="fa-regular fa-heart"></i>
-            <span>12K</span> 
-
-        </div>
-
-        <div class="Comments-button">
-            <i class="fa-regular fa-comment"></i>
-            <span>7k</span> </i>
-        </div>
-
-        <div class="the-share-button">
-            <i class="fa-regular fa-paper-plane"></i>
-        </div>
-
-        <div class="The-save-button">
-            <i class="fa-regular fa-bookmark"></i>
-        </div>
-    </div>
-
-
-
-    <div class="the-description">
-        <p> <span class="Account-details-in-description">qatarairways <i class="fa-solid fa-circle-check" style="color: rgb(0, 149, 246);"></i></span> Nine more 787-9 airplanes for Ethiopian Airlines! ✈️</p><span class="the-more-button-in-description"> ...more</span>      
-    </div>
-</div>   
+    </div> 
 </body>
 </html>

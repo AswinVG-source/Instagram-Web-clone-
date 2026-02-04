@@ -1,6 +1,7 @@
 body{
     padding:0;
     margin:0;
+    background-color: rgb(255, 255, 255);
 }
 .Div-Main {
     display: flex;
@@ -38,16 +39,11 @@ body{
     position: absolute;
     top: -1px;   /* Adjust up/down */
     right: -4px; /* Adjust left/right */
-    
-    /* Dot Styling */
     width: 9px;
     height: 9px;
     background-color: #ff3040;
     border-radius: 50%;
     border: 2px solid white; 
-}
-.fa-location-arrow{
-    font-size:30px;
 }
 .message-indicator{
     position: absolute;
@@ -69,11 +65,12 @@ body{
 
 .Post{
     display:flex;
-    flex: 1.37;      
+    flex-direction:column;
+    flex: 1.37;
+    align-items: center;      
     justify-content: center;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size:14px;
-    background-color: lightgoldenrodyellow;
 }
 
 .status-circle-container{
@@ -84,7 +81,6 @@ body{
     height: fit-content;
     padding-top:20px;
     margin-bottom:30px;
-    background-color: lightseagreen;
 }
 
 .status-circle{
@@ -93,6 +89,7 @@ body{
     width: fit-content;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 .Status-color-ring{
     display:flex;
@@ -102,7 +99,6 @@ body{
     border-radius: 50%;
     justify-content: center;
     align-items: center;
-    
 }
 .Account-image-status{
     display:flex;
@@ -118,51 +114,165 @@ body{
     height:85px;
     border-radius:50%;
 }
-.Account-name{
-    display:flex;
-}
 .Account-name p{
     margin:0;
-
-}
-.The-status-and-post-holder{
-    display:flex;
-    flex-direction: column;
 }
 
+/* --- POST STYLES --- */
 .post-container{
     display: flex;
     flex-direction:column;
     justify-content: center;
-    width: 470px;
+    width: 550px;
     margin-bottom:30px;
+    /* Important: Relative positioning for the popup to calculate 'top' correctly */
+    position: relative; 
 }
 .the-account-details{
     display: flex;
     align-items:center;
-    padding: 15px 12px;
+    padding-bottom:10px;
+    /* Added relative here so popup stays near the header */
+    position: relative; 
 }
 .the-account-details p{
     font-family:  -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 12px;
+    font-size: 15px;
     margin:0;
 }
-.the-account-details img{
-    width: 32px;         /* Instagram uses 32x32 for these headers */
+.the-account-details .owner-dp img{
+    width: 32px;         
     height: 32px;
     border-radius: 50%;
-    margin-right: 10px;   /* Add space between image and text */
-    display: block;       /* Removes tiny hidden gaps under images */
+    margin-right: 5px;   
+    display: block;
+    padding-left: 0;
+}
+.the-account-details .owner-dp{
+    padding-left:10px;
 }
 .owner-details{ 
     display: flex;
     flex-direction: column;
     justify-content: center;    
 }
+
+/* --- POPUP CSS START (The Fixed Part) --- */
+.The-account-overview-button{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width:370px;
+    height:auto;
+    
+    /* Positioning relative to .the-account-details */
+    top: 50px; 
+    left: 20px;
+    
+    background-color:rgb(250,250,250);
+    border-radius:25px;
+    
+    /* Hidden by default */
+    opacity:0;
+    pointer-events: none; /* Prevents clicking it while invisible */
+    transition: opacity 0.2s ease-in-out; /* Makes the fade smooth */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Adds a subtle shadow */
+    z-index: 10; /* Ensures it sits on top of everything */
+}
+
+/* The Logic: Hovering DP or Name/Details reveals the sibling Popup */
+.owner-dp:hover ~ .The-account-overview-button,       
+.owner-details:hover ~ .The-account-overview-button,  
+.The-account-overview-button:hover {                  
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Cursor pointer for better UX */
+.owner-details:hover,
+.owner-dp:hover{
+    cursor: pointer;
+}
+
+/* Internal Popup Styling */
+.account-details{
+    display: flex;
+    width:100%;
+    margin-top: 15px;
+    margin-left:7px
+}
+.account-holder-name-inside-the-hover-menu{
+    font-size: 10px;
+    font-weight: lighter;
+    color: rgb(97, 95, 95);
+}
+.followers-count{
+    display: flex;
+    width:100%;
+    justify-content: space-between;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    margin-top: 25px;
+}
+.total-post, .total-followers, .total-following{
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+}
+.total-post{ padding-left:35px; }
+.total-following{ padding-right:35px; }
+
+.the-account-details-pictures{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px; /* Added padding so images don't touch edges */
+}
+.The-account-details-pic1 img{
+    width: 110px; /* Adjusted slightly to fit padding */
+    height:140px;
+    border-radius:0;
+    margin-top: 20px;
+    object-fit:cover;
+}
+
+.follow-buttons-inside{
+    width:auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top:20px;
+}
+.follow-buttons-inside-message, .follow-buttons-inside-follow{
+    background-color: #0095f6;
+    border-color: white;
+    border-style:solid;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size:15px;
+    width:150px;
+    padding:5px 10px;
+    border-radius: 10px;
+    margin-bottom:15px;
+    color: white; 
+    cursor: pointer;
+}
+.follow-buttons-inside-follow{
+    background-color: rgb(239, 236, 236);
+    border-color:rgb(239, 236, 236);
+    color: black;
+}
+/* --- POPUP CSS END --- */
+
 .owner-account-name{
     font-weight:bold;
 }
-.Switch-button{
+.owner-details .Owner-name{
+    color:rgb(106, 113, 122);
+    font-weight:400;
+    font-size: 10px;
+}
+.post-container .Switch-button{
     color:rgb(0, 149, 246);
     background-color:white;
     border-color:white;
@@ -172,6 +282,7 @@ body{
     font-weight:bold;
     cursor: pointer;
     transition: text-decoration 5s;
+    margin-left: 5px;
 }
 .Switch-button:hover {
     text-decoration: underline;
@@ -193,7 +304,9 @@ body{
     height: auto;
     display: block;
     object-fit:cover;
-
+}
+.The-post-image-container video{
+    width: 100%;
 }
 .the-likebutton-container{
     display: flex;
@@ -206,9 +319,9 @@ body{
 .Comments-button,
 .The-save-button,
 .the-share-button {
-    display: flex;       /* unique flexbox for the button itself */
-    align-items: center; /* centers the number with the icon */
-    gap: 6px;            /* adds space between the icon and the number */
+    display: flex;       
+    align-items: center; 
+    gap: 6px;            
 }
 .the-likebutton-container span{
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -230,6 +343,7 @@ body{
 .the-description{
     display: flex;
     font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin-top:12px;
 }
 .the-description p{
     margin:0;
@@ -237,7 +351,7 @@ body{
 }
 .Account-details-in-description{
     font-size:13px;
-    padding-left:12px;
+    padding-left:10px;
     font-weight:bold;
 }
 .the-more-button-in-description{
@@ -249,14 +363,11 @@ body{
     color: rgb(141, 140, 140);
 }
 
-
-
-
+/* Sidebar Suggestions Styles */
 .followrequest {
     flex: 1;
     flex-direction: column;
     position: static;   
-    
 }
 .Main-container{
     padding-left:15px;
@@ -286,11 +397,6 @@ body{
     font-weight:600;
     cursor: pointer;
 }
-.Owner-name{
-    color:rgb(106, 113, 122);
-    font-weight:400;
-    font-size: 14px;
-}
 .Switch-button{
     margin-left:55px;
     margin-right:10px;
@@ -301,11 +407,8 @@ body{
     cursor: pointer;
     transition: text-decoration 0.15s;
 }
-.Switch-button:hover{
-    text-decoration: underline;
-}
 .suggested-accounts{
-   margin-bottom: 35px;
+    margin-bottom: 35px;
 }
 .Suggested-for-you-container{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -313,7 +416,6 @@ body{
     width: fit-content;
     margin-left:40px;
     margin-top:20px ;
-    
 }
 .Suggested-for-you-container p{
     display: flex;
@@ -331,10 +433,6 @@ body{
     color: rgb(12, 16, 20);
     cursor: pointer;
     transition: color 0.15s;
-    
-}
-.Suggested-for-you-container-button:hover{
-    color:rgb(146, 153, 159);
 }
 .Main-container1 { 
     padding-left:20px;
@@ -359,80 +457,61 @@ body{
 }
 .Property-rights{
     padding-top:20px;
-
 }
-        .Switch-button2 {
-            width:251px;
-            height:54.400px;
-            position: fixed;
-            bottom: 35px;  /* Keeps it at the bottom */
-            right: 45px;   /* Keeps it at the right */
-            
-            display: flex;
-            align-items: center;
-            
-            /* THIS IS THE KEY: Creates exactly 10px space between Icon, Text, and Image */
-            gap: 5px; 
-            
-            padding: 10px 15px; /* Adds breathing room inside the button */
-            background-color:white; /* Needed to see the button */
-            border-radius: 50px;     /* Makes it a pill shape */
-            box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 12px 0px; /* Adds the shadow pop */
-            border: none;
-            cursor: pointer;
-            
-            
-            font-family: system-ui, -apple-system, sans-serif;
-            font-weight: 600;
-        }
-         .img1, .img2 {
-            height: 25px;
-            width: 25px;
-            border-radius: 50%;
-            border: 2px solid white; /* Adds the overlap effect border */
-            margin-left: 55px; /* Pushes image slightly right */
-
-        }
-
-        .img2{
-            margin: -12px;
-            z-index: -1;
-        }
-
-        /* The container for Icon + Red Dot */
-        .message {
-            position: relative; /* Anchors the red dot */
-            width: fit-content; /* CRITICAL: Only takes as much space as the icon needs */
-            /* Removed width: 85px */
-            /* Removed background-color: lightblue (unless you want to see the box) */
-        }
-
-        .fa-location-arrow {
-            font-size: 30px;
-            transform: rotate(15deg);
-            /* Removed padding-right/left because 'gap' handles spacing now */
-        }
-
-        .message-popup {
-            position: absolute; /* Floats on top of the icon */
-            top: -3px;          /* Move up */
-            right: -8px;        /* Move right */
-            
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            
-            width: 18px;
-            height: 18px;
-            background-color: #ff3040;
-            border-radius: 50%;
-            border: 2px solid white;
-            
-            color: white;
-            font-size: 10px;
-            font-weight: bold;
-        }
-        .Message-tittle{
-            margin: 0; 
-            font-size:16px ;
-        }
+.Switch-button2 {
+    width:251px;
+    height:54.400px;
+    position: fixed;
+    bottom: 35px;  
+    right: 45px;   
+    display: flex;
+    align-items: center;
+    gap: 5px; 
+    padding: 10px 15px; 
+    background-color:white; 
+    border-radius: 50px;     
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 12px 0px; 
+    border: none;
+    cursor: pointer;
+    font-family: system-ui, -apple-system, sans-serif;
+    font-weight: 600;
+}
+    .img1, .img2 {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    border: 2px solid white; 
+    margin-left: 55px; 
+}
+.img2{
+    margin: -12px;
+    z-index: -1;
+}
+.message {
+    position: relative; 
+    width: fit-content; 
+}
+.fa-location-arrow {
+    font-size: 30px;
+    transform: rotate(15deg);
+}
+.message-popup {
+    position: absolute; 
+    top: -3px;          
+    right: -8px;        
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 18px;
+    height: 18px;
+    background-color: #ff3040;
+    border-radius: 50%;
+    border: 2px solid white;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+}
+.Message-tittle{
+    margin: 0; 
+    font-size:16px ;
+}
